@@ -1,0 +1,47 @@
+import gradio as gr
+
+# CSS для стилизации кнопки (вставьте сюда CSS из CodePen)
+css_code = """
+/* Пример CSS для кнопки, замените на код с CodePen */
+.toggle-button {
+    width: 50px;
+    height: 25px;
+    position: relative;
+    background-color: #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button::before {
+    content: '';
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: left 0.3s ease;
+}
+
+.toggle-button.active {
+    background-color: #4CAF50;
+}
+
+.toggle-button.active::before {
+    left: 25px;
+}
+"""
+
+# HTML для кнопки
+html_code = """
+<!-- HTML кнопки -->
+<div class="toggle-button" onclick="this.classList.toggle('active')"></div>
+"""
+
+# Создаём Gradio интерфейс
+with gr.Blocks(css=css_code) as demo:
+    gr.HTML(html_code)
+
+demo.launch()
